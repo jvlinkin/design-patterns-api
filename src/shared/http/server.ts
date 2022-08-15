@@ -14,6 +14,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+//A variável routes, é a variável que está fazendo o redirect pras respectivas rotas.
 app.use(routes);
 app.use(errors());
 
