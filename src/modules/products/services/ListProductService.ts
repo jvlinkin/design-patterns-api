@@ -9,7 +9,7 @@ class ListProductService {
     //Importando o repositório.
     const productsRepository = getCustomRepository(ProductRepository);
     
-    const products = productsRepository.find();
+    const products = await productsRepository.find();
     return products;
 
   }
