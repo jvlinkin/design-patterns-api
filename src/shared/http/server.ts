@@ -6,7 +6,7 @@ import {errors} from 'celebrate'
 import routes from './routes';
 import AppError from '@shared/errors/AppError';
 import '@shared/typeorm'
-import { SimpleConsoleLogger } from 'typeorm';
+
 
 const app = express();
 

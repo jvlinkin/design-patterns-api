@@ -1,7 +1,14 @@
 import auth from "@config/auth";
 import AppError from "@shared/errors/AppError";
 import { NextFunction, Request, Response } from "express";
+import { request } from "http";
 import { verify } from "jsonwebtoken";
+
+interface TokenPayLoad{
+  iat: number,
+  ext: number,
+  sub: string
+};
 
  export default function isAuthenticated(req: Request,res: Response, next: NextFunction): void{
 
@@ -14,7 +21,15 @@ import { verify } from "jsonwebtoken";
   const [,token] = authHeader.split(' ');
 
   try {
-    const decodedToken = verify(token, auth.jwt.secret)
+    const decodedToken = verify(token, auth.jwt.secret);
+    
+    const { sub } = decodedToken as TokenPayLoad;
+
+    req.user = {
+      id: sub
+    }
+
+
     return next();
   } catch {
     throw new AppError('Invalid JWT Token');    
