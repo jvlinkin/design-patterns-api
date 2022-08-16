@@ -6,6 +6,7 @@ import {errors} from 'celebrate'
 import routes from './routes';
 import AppError from '@shared/errors/AppError';
 import '@shared/typeorm'
+import uploadConfig from '@config/upload';
 
 
 const app = express();
@@ -16,6 +17,10 @@ app.use(express.json());
 
 //A variável routes, é a variável que está fazendo o redirect pras respectivas rotas.
 app.use(routes);
+
+//Rota estática para o front-end conseguir consumir as imagens de avatar dos usuários.
+app.use('/files', express.static(uploadConfig.directory))
+
 app.use(errors());
 
 //Middleware - Tratamento de erros na aplicação.
