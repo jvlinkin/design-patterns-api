@@ -4,13 +4,17 @@ import usersRoutes from "@modules/users/routes/user.routes";
 import { Router, Request, Response } from "express";
 
 const routes = Router();
-routes.use('/products', productsRouter);
-routes.use('/users', usersRoutes);
-routes.use('/sessions', sessionsRouter)
-
+//Rota púbica (teste)
 routes.get('/', (req: Request, res: Response)=>{
   return res.json({message: "Hello Dev!"});
 
 })
+
+//Rotas
+routes.use('/products', productsRouter);
+routes.use('/users', usersRoutes);
+routes.use('/sessions', sessionsRouter)
+
+
 
 export default routes;
