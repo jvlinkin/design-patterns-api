@@ -4,7 +4,7 @@ import { NextFunction, Request, Response } from "express";
 import { request } from "http";
 import { verify } from "jsonwebtoken";
 
-interface TokenPayLoad{
+interface ITokenPayLoad{
   iat: number,
   ext: number,
   sub: string
@@ -23,7 +23,7 @@ interface TokenPayLoad{
   try {
     const decodedToken = verify(token, auth.jwt.secret);
     
-    const { sub } = decodedToken as TokenPayLoad;
+    const { sub } = decodedToken as ITokenPayLoad;
 
     req.user = {
       id: sub
