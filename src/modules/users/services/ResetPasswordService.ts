@@ -40,12 +40,8 @@ class ResetPasswordService {
 
     //Gerando o hash da senha:
     user.password = await hash(password, 8);
+    await usersRepository.save(user);
 
-
-
-
-    
-    
 
   }
 }
