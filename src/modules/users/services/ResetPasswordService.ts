@@ -35,11 +35,11 @@ class ResetPasswordService {
 
     //Agora comparamos se a data atual é maior que o limite do token. Se true, o token já expirou.
     if(isAfter(Date.now(), compareDate)){
-      throw new AppError('Token expired.')
+      throw new AppError('Token expired.');
     }
 
     //Gerando o hash da senha:
-    user.password = await hash(password, 8)
+    user.password = await hash(password, 8);
 
 
 
