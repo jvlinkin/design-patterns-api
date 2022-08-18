@@ -27,7 +27,6 @@ export default class EtherealMail {
     });
 
     console.log('Message sent: %s', (await message).messageId);
-        // Preview only available when sending through an Ethereal account
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(await message));
 
 
