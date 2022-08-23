@@ -2,6 +2,7 @@
 import { Request, Response } from "express";
 import CreateUserService from "../services/CreateUserService";
 import ListUserService from "../services/ListUserService";
+import { instanceToInstance } from "class-transformer";
 
 export default class UsersController {
 
@@ -10,7 +11,7 @@ export default class UsersController {
     const listUser = new ListUserService();
     const users = await listUser.execute();
 
-    return res.json(users);
+    return res.json(instanceToInstance(users));
   }
   //Chamando serviço de criar usuário.
   public async create(req: Request,res: Response): Promise<Response>{
@@ -20,6 +21,6 @@ export default class UsersController {
     const user = await createUser.execute({
     name, email, password
     });
-    return res.json({msg: 'Usuário cadastrado com sucesso.'})
+    return res.json({msg: 'User registered succesffully..'})
   }
 }
