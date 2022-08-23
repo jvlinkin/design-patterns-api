@@ -5,6 +5,7 @@ import usersRoutes from "@modules/users/routes/user.routes";
 import profileRouter from "@modules/users/routes/profile.routes"
 import customersRouter from "@modules/customers/routes/customers.routes";
 import { Router, Request, Response } from "express";
+import ordersRouter from "@modules/orders/routes/orders.routes";
 
 const routes = Router();
 //Rota púbica (teste)
@@ -20,6 +21,7 @@ routes.use('/sessions', sessionsRouter);
 routes.use('/password', passwordRouter);
 routes.use('/profile', profileRouter);
 routes.use('/customers', customersRouter)
+routes.use('/orders', ordersRouter)
 
 
 
