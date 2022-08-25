@@ -1,4 +1,5 @@
 //Como iremos importar um repositório customizado, precisamos importar:
+import RedisCache from '@shared/cache/RedisCache';
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 
@@ -31,9 +32,15 @@ class UpdateProductService{
       throw new AppError('There is already a product with this name!')
     }
 
+    const redisCache = new RedisCache();
+    await redisCache.invalidate('api-vendas-PRODUCT-LIST');
+    
+
     product.name = name;
     product.price = price;
     product.quantity = quantity;
+
+    
 
     await productsRepository.save(product);
     
