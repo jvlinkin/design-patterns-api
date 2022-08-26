@@ -8,6 +8,7 @@ import routes from './routes';
 import AppError from '@shared/errors/AppError';
 import '@shared/typeorm';
 import uploadConfig from '@config/upload';
+import rateLimiter from './middlewares/rateLimiter';
 
 
 const app = express();
@@ -15,6 +16,7 @@ const app = express();
 //Configs
 app.use(cors());
 app.use(express.json());
+app.use(rateLimiter);
 
 //A variável routes, é a variável que está fazendo o redirect pras respectivas rotas.
 app.use(routes);
