@@ -2,7 +2,7 @@
 import RedisCache from '@shared/cache/RedisCache';
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
-import { ProductRepository } from '../typeorm/repositories/ProductsRepository';
+import { ProductRepository } from '@modules/products/infra/typeorm/repositories/ProductsRepository';
 
 //Como iremos pesquisar por um "id", precisamos criar uma interface para tipar o dado na request:
 interface IRequest {
