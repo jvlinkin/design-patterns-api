@@ -17,7 +17,7 @@ export default class RedisCache{
   public async recover<T>(key:string): Promise<T | null>{
     //Método GET é do Redis, para buscar no BD.
     const data = await this.client.get(key);
-    
+    //testando
     if(!data){
       return null
     }
